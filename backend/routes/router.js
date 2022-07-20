@@ -1,7 +1,5 @@
 const router = require("express").Router();
-
-router.use("/", (req, res)=> {
-    console.log(req.body);
-});
+const URLMappingService = require("../services/url-mapping.service");
+router.use("/", URLMappingService.saveData);
 
 module.exports = router;
