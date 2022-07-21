@@ -1,19 +1,20 @@
 const Mongoose = require("mongoose");
 
 const urlSchema = Mongoose.Schema({
- id: {
+  id: {
     type: String,
- },
- originURL: {
+  },
+  originURL: {
     type: String,
     require: true,
- },
- shortURL: {
+  },
+  shortURL: {
     type: String,
- },
- userClicks: {
+  },
+  clicks: {
     type: Number,
- }
+    default: 0,
+  },
 });
 
 module.exports = Mongoose.model("URLMapping", urlSchema);
