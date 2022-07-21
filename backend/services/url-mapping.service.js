@@ -39,7 +39,7 @@ exports.getShortURL = async (req, res) => {
 exports.getAllData = async (req, res) => {
   try {
     let listURLData = await URLDao.getAll();
-    return res.status(200).json({ data: listURLData });
+    return res.status(200).send(listURLData);
   } catch (err) {
     return res.status(500).json({ message: "Oops something went wrong." });
   }
