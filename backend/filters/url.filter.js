@@ -1,6 +1,6 @@
 exports.bodyFilter = (req, res, next) => {
   if (req.body) {
-    if (req.body.originURL) {
+    if (req.body.originURL || req.body.shortURL) {
       next();
     } else {
       return res.status(400).json({ message: "Invalid body param." });

@@ -9,7 +9,11 @@ exports.getAll = async () => {
   return await URLMapping.find({});
 };
 
-exports.find = async (shortURL) => {
+exports.find = async (originURL) => {
+  return await URLMapping.findOne({ originURL: originURL });
+};
+
+exports.findByShortURL = async (shortURL) => {
   return await URLMapping.findOne({ shortURL: shortURL });
 };
 

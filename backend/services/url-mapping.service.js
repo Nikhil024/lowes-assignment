@@ -9,9 +9,9 @@ exports.saveData = async (req, res) => {
     if (checkIfDataExists) {
       return res.status(409).json({ data: checkIfDataExists });
     } else {
-      let urlMappingData = await generateShortURL(originURL);
+      let urlMappingData = await generateShortURL(originURL, req);
       const urlData = await URLDao.save(urlMappingData);
-      return res.status(200).json({ data: urlData });
+      return res.status(200).send(urlData);
     }
   } catch {
     return res.status(500).json({ message: "Oops something went wrong." });
@@ -19,13 +19,13 @@ exports.saveData = async (req, res) => {
 };
 
 exports.getShortURL = async (req, res) => {
-  const shortURL = req.params.shortURL;
+  const { shortURL } = req.body;
   if (shortURL) {
-    const urlData = await URLDao.find(shortURL);
+    const urlData = await URLDao.findByShortURL(shortURL);
     if (urlData) {
       urlData.clicks++;
       URLDao.save(urlData);
-      res.status(200).json({ data: urlData });
+      res.status(200).send(urlData);
     } else {
       res
         .status(400)
@@ -45,7 +45,7 @@ exports.getAllData = async (req, res) => {
   }
 };
 
-async function generateShortURL(originURL) {
+async function generateShortURL(originURL, req) {
   let dbSaveURLData = {
     originURL: originURL,
     shortURL: "",
@@ -53,6 +53,20 @@ async function generateShortURL(originURL) {
   };
   try {
     dbSaveURLData.shortURL = await nanoid(5);
+
+    if (
+      req.headers.origin != undefined ||
+      req.headers.origin != null
+      //&& req.header.origin.indexOf(process.env.SERVER_PORT) == -1
+    ) {
+      dbSaveURLData.shortURL =
+        req.headers.origin + "/" + dbSaveURLData.shortURL;
+    } else {
+      if (req.headers.host != undefined || req.headers.host != null) {
+        dbSaveURLData.shortURL =
+          "http://" + req.headers.host + "/" + dbSaveURLData.shortURL;
+      }
+    }
     return dbSaveURLData;
   } catch (err) {
     return res.status(500).json({ message: "Oops something went wrong!" });
