@@ -1,3 +1,5 @@
+<app-header></app-header>
+
 <div class="flex flex-col">
   <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
     <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
@@ -45,7 +47,12 @@
               <td
                 class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
               >
-                <a href="{{ urlData.originURL }}">{{ urlData.originURL }}</a>
+                <a
+                  class="underline text-blue-600 hover:text-blue-800 visited:text-purple-600"
+                  href="{{ urlData.originURL }}"
+                  target="_blank"
+                  >{{ urlData.originURL }}</a
+                >
               </td>
               <td
                 class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"

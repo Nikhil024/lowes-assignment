@@ -1,0 +1,37 @@
+<app-header></app-header>
+<form
+  class="mx-auto mt-32"
+  autocomplete="off"
+  (ngSubmit)="generateURL(f)"
+  #f="ngForm"
+>
+  <div
+    class="relative mx-auto z-0 mb-6 w-4/5 md:w-5/12 group flex space-x-3 md:space-x-10"
+  >
+    <input
+      type="url"
+      name="floating_email"
+      id="floating_email"
+      class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-900 appearance-none focus:outline-none focus:ring-0 focus:border-gray-300 peer"
+      placeholder=" "
+      id="url"
+      name="url"
+      ngModel
+      #url="ngModel"
+      required
+    />
+    <label
+      for="floating_email"
+      class="!ml-0 peer-focus:font-medium absolute text-sm text-gray-900 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-black-600 peer-focus:dark:text-black-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+      >URL</label
+    >
+    <button
+      type="submit"
+      class="mb-0 text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+    >
+      Shorten
+    </button>
+  </div>
+</form>
+
+<div></div>
