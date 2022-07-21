@@ -10,28 +10,49 @@
   >
     <input
       type="url"
-      name="floating_email"
-      id="floating_email"
       class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-900 appearance-none focus:outline-none focus:ring-0 focus:border-gray-300 peer"
       placeholder=" "
       id="url"
       name="url"
       ngModel
       #url="ngModel"
+      [ngClass]="{ 'border-red-600': !url.valid && url.touched }"
       required
+      (keyup)="urlChecker(url)"
     />
+
     <label
-      for="floating_email"
-      class="!ml-0 peer-focus:font-medium absolute text-sm text-gray-900 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-black-600 peer-focus:dark:text-black-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-      >URL</label
+      for="url"
+      class="!ml-0 peer-focus:font-medium absolute text-sm focus:text-gray-900 text-gray-900 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-black-600 peer-focus:dark:text-black-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
     >
+      <span
+        *ngIf="!url.valid && url.touched"
+        [ngClass]="{ 'text-red-600': !url.valid && url.touched }"
+      >
+        Invalid URL</span
+      >
+      <span *ngIf="!url.valid && !url.touched">URL</span>
+      <span *ngIf="url.valid && !url.touched">URL</span>
+      <span *ngIf="url.valid && url.touched">URL</span>
+    </label>
     <button
       type="submit"
-      class="mb-0 text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+      [ngClass]="{ 'opacity-50 cursor-not-allowed': !f.valid }"
+      class="mb-0 bg-transparent hover:bg-gray-900 hover:text-white text-gray-900 bg-white border border-black-300 focus:outline-1 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3"
     >
       Shorten
     </button>
   </div>
 </form>
 
-<div></div>
+<div
+  *ngIf="showShortURL"
+  class="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800"
+  role="alert"
+>
+  <span class="font-medium">Success alert!</span> Shortned URL below.
+  <span class="font-bold"
+    >{{ urlData?.shortURL }}
+    <button ngxClipboard [cbContent]="urlData?.shortURL">Copy</button></span
+  >
+</div>

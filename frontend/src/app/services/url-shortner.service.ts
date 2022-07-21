@@ -11,4 +11,12 @@ export class UrlShortnerService {
   getAllData() {
     return this.httpClient.get<URLShortener[]>('/api');
   }
+
+  generateShortUrl(originURL: string) {
+    return this.httpClient.put<URLShortener>('/api', { originURL: originURL });
+  }
+
+  getOriginalURL(shortURL: string | null) {
+    return this.httpClient.post<URLShortener>('/api', { shortURL: shortURL });
+  }
 }

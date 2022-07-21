@@ -6,6 +6,7 @@ import { UrlShortnerComponent } from './components/url-shortner/url-shortner.com
 const routes: Routes = [
   { path: '', component: HomepageComponent },
   { path: 'shorten', component: UrlShortnerComponent },
+  { path: ':shortURL', component: HomepageComponent },
 ];
 
 @NgModule({

@@ -8,7 +8,7 @@ import { UrlShortnerService } from './services/url-shortner.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './components/header/header.component';
 import { UrlShortnerComponent } from './components/url-shortner/url-shortner.component';
-
+import { ClipboardModule } from 'ngx-clipboard';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,6 +22,7 @@ import { UrlShortnerComponent } from './components/url-shortner/url-shortner.com
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    ClipboardModule,
   ],
   providers: [UrlShortnerService],
   bootstrap: [AppComponent],
