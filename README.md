@@ -84,5 +84,5 @@ MongoDB, Expressjs, Angular, Nodejs
 ### Backend
 
 ```terminal
-    - docker run -p 8080:8080 nikhilmohandas/backend:latest
+    - docker run -p 8080:8080 -e SERVER_PORT=8080 -e MONGO_URI=<MONGODB URL> nikhilmohandas/backend:latest
 ```
