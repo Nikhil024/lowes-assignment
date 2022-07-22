@@ -13,7 +13,7 @@ MongoDB, Expressjs, Angular, Nodejs
       <img src="https://img.shields.io/badge/License-MIT-green.svg" />
    </a>
       <a href="https://github.com/Nikhil024/lowes-assignment/blob/develop">
-     [![Generic badge](https://img.shields.io/badge/Testing-100%-green.svg)](https://shields.io/)
+      <img src="https://img.shields.io/badge/Testing-100%25-green.svg" />
    </a>
 </p>
 
