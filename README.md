@@ -12,6 +12,9 @@ MongoDB, Expressjs, Angular, Nodejs
    <a href="https://github.com/Nikhil024/lowes-assignment/blob/develop/LICENSE">
       <img src="https://img.shields.io/badge/License-MIT-green.svg" />
    </a>
+      <a href="https://github.com/Nikhil024/lowes-assignment/blob/develop">
+      <img src="https://img.shields.io/badge/Testing-100%-green.svg" />
+   </a>
 </p>
 
 # Usage (run fullstack app on your machine)
@@ -21,6 +24,8 @@ MongoDB, Expressjs, Angular, Nodejs
     - Docker
 
 ## Client-side usage(PORT: 4200) - Angular
+
+> Please check the IP set in proxy.conf.json file of frontend folder, this should point to where the backend Nodejs application is running
 
 ```terminal
     - cd frontend/
