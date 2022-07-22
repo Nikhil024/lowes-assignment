@@ -10,30 +10,56 @@ import { UrlShortnerService } from 'src/app/services/url-shortner.service';
 })
 export class HomepageComponent implements OnInit {
   public urlDataResponseList?: URLShortener[];
+  showContent = true;
+  showError = false;
+  errorMessage = '';
 
   constructor(
     private urlShortnerService: UrlShortnerService,
     private route: ActivatedRoute
   ) {
-    urlShortnerService.getAllData().subscribe(
+    let shortURL = this.route.snapshot.paramMap.get('shortURL');
+    if (shortURL != null) {
+      this.showContent = false;
+      this.showError = false;
+      this.urlShortnerService
+        .getOriginalURL(window.location.origin + '/' + shortURL)
+        .subscribe(
+          (res) => (window.location.href = res.originURL),
+          (err) => {
+            this.showContent = false;
+            this.showError = true;
+            if (err.status == 400) {
+              this.errorMessage = 'Invalid URL, please create again!';
+            }
+            this.errorMessage = 'Internal Error, please try again!';
+          }
+        );
+    } else {
+      this.getData();
+    }
+  }
+
+  ngOnInit(): void {}
+
+  getData() {
+    this.urlShortnerService.getAllData().subscribe(
       (urlDataResponseList) => {
-        console.log(urlDataResponseList);
         this.urlDataResponseList = urlDataResponseList;
+        this.showContent = true;
+        this.showError = false;
       },
       (err) => {
-        console.log('err' + JSON.stringify(err));
+        this.showContent = false;
+        this.showError = true;
+        this.errorMessage = 'Internal Error, please try again!';
       }
     );
   }
 
-  ngOnInit(): void {
-    let shortURL = this.route.snapshot.paramMap.get('shortURL');
-    console.log(window.location.origin + '/' + shortURL);
-    this.urlShortnerService
-      .getOriginalURL(window.location.origin + '/' + shortURL)
-      .subscribe(
-        (res) => (window.location.href = res.originURL),
-        (err) => console.log(err)
-      );
+  updateView() {
+    setTimeout(() => {
+      this.getData();
+    }, 2000);
   }
 }

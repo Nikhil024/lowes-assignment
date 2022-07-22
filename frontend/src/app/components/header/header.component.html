@@ -10,17 +10,10 @@
             <div class="ml-10 flex items-baseline space-x-4">
               <a
                 class="text-gray-800 hover:text-gray-400 px-3 py-2 rounded-md text-sm font-medium"
-                routerLink="/"
+                routerLink="/list"
                 routerLinkActive="active"
               >
-                Home
-              </a>
-              <a
-                class="text-gray-800 hover:text-gray-400 px-3 py-2 rounded-md text-sm font-medium"
-                routerLink="/shorten"
-                routerLinkActive="active"
-              >
-                Shorten URL
+                List URL
               </a>
             </div>
           </div>
@@ -31,7 +24,7 @@
         <div class="-mr-2 flex md:hidden">
           <button
             (click)="toggleItems()"
-            class="text-gray-800 dark:text-white hover:text-gray-300 inline-flex items-center justify-center p-2 rounded-md focus:outline-none"
+            class="text-gray-800 focus:text-gray-800 hover:text-gray-300 inline-flex items-center justify-center p-2 rounded-md focus:outline-none"
           >
             <svg
               width="20"
@@ -52,16 +45,10 @@
     <div class="md:hidden" *ngIf="mobileHeaderItemsVisible">
       <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
         <a
-          class="text-gray-300 hover:text-gray-800 dark:hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-          routerLink="/"
+          class="text-gray-800 hover:text-gray-300 block px-3 py-2 rounded-md text-base font-medium"
+          routerLink="/list"
         >
-          Home
-        </a>
-        <a
-          class="text-gray-800 dark:text-white block px-3 py-2 rounded-md text-base font-medium"
-          routerLink="/shorten"
-        >
-          Shorten URL
+          List URL
         </a>
       </div>
     </div>

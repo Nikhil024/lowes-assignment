@@ -4,8 +4,8 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { UrlShortnerComponent } from './components/url-shortner/url-shortner.component';
 
 const routes: Routes = [
-  { path: '', component: HomepageComponent },
-  { path: 'shorten', component: UrlShortnerComponent },
+  { path: '', component: UrlShortnerComponent },
+  { path: 'list', component: HomepageComponent },
   { path: ':shortURL', component: HomepageComponent },
 ];
 

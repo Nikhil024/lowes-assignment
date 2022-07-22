@@ -14,6 +14,8 @@ export class UrlShortnerComponent implements OnInit {
 
   urlData?: URLShortener;
   showShortURL = false;
+  showErrorBanner = false;
+  errorMessage = 'URL already exist, please visit List URL page!';
 
   ngOnInit(): void {}
 
@@ -27,8 +29,17 @@ export class UrlShortnerComponent implements OnInit {
         (res) => {
           this.urlData = res;
           this.showShortURL = true;
+          this.showErrorBanner = false;
         },
-        (err) => console.log('err ' + err)
+        (err) => {
+          this.showErrorBanner = true;
+          this.showShortURL = false;
+          if (err.status == 409) {
+            console.log('err ' + JSON.stringify(err));
+          } else {
+            this.errorMessage = err.message;
+          }
+        }
       );
     } else {
       this.showShortURL = false;
@@ -37,6 +48,9 @@ export class UrlShortnerComponent implements OnInit {
   }
 
   urlChecker(url: NgModel) {
-    console.log(url.value);
+    if (url.value.length == 0) {
+      this.showErrorBanner = false;
+      url.control.setErrors({ incorrect: false });
+    }
   }
 }
