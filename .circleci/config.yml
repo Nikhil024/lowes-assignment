@@ -4,7 +4,7 @@ jobs:
     docker:
       - image: circleci/node:12
 
-    working_directory: ~/backend
+    working_directory: ~/lowes-assignment/backend/
 
     steps:
       - checkout
