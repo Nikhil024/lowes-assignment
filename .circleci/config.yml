@@ -14,7 +14,9 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
       - run: cd backend
+      - run: ls -ltrh
       - run: npm install
+      - run: ls -ltrh
 
       - save_cache:
           paths:
