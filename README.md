@@ -31,6 +31,12 @@ MongoDB, Expressjs, Angular, Nodejs
     - docker-compose up -d
 ```
 
+> Use below command to check for logs after docker compose command is run
+
+```terminal
+    - docker-compose logs -f
+```
+
 ## Client-side usage(PORT: 4200) - Angular
 
 > Please check the IP set in proxy.conf.json file of frontend folder, this should point to where the backend Nodejs application is running

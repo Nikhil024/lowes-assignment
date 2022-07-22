@@ -12,14 +12,16 @@ services:
       - backend
 
   backend:
-    image: 'nikhilmohandas/frontend:latest'
+    image: 'nikhilmohandas/backend:latest'
     ports:
       - '8080:8080'
     container_name: 'backend'
     environment:
       - SERVER_PORT=8080
-      - MONGO_URI=mongodb://0.0.0.0:27017/urlShortner
+      - MONGO_URI=mongodb://host.docker.internal:27017/urlShortner
     restart: unless-stopped
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     links:
       - database
 
