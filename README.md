@@ -16,7 +16,7 @@ MongoDB, Expressjs, Angular, Nodejs
 
 # Usage (run fullstack app on your machine)
 
-## Prerequisites
+## Prerequisites - Incase using docker-compose.yaml
 
     - Docker
 
@@ -30,7 +30,7 @@ MongoDB, Expressjs, Angular, Nodejs
 
 ## Server-side usage(PORT: 8080) - NodeJS
 
-> create a new file .env which will have the below attributes
+> create a new file in backend/ directory with name as .env which will have the below attributes or pass these as environment variables
 
 ```terminal
     - SERVER_PORT=
@@ -42,3 +42,8 @@ MongoDB, Expressjs, Angular, Nodejs
     - npm install
     - npm start
 ```
+
+## Docker Hub Image Links
+
+    - Backend: https://hub.docker.com/repository/docker/nikhilmohandas/backend
+    - Frontend: https://hub.docker.com/repository/docker/nikhilmohandas/frontend
